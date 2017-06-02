@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  code: MyString
+  fund: one
+  management_fee: 1.5
+  incentive_fee: 1.5
+
+two:
+  name: MyString
+  code: MyString
+  fund: two
+  management_fee: 1.5
+  incentive_fee: 1.5

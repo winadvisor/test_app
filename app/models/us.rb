@@ -1,0 +1,2 @@
+class US < Fund
+end

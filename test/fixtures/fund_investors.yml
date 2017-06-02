@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fund: one
+  fund_class: one
+  entity: one
+
+two:
+  fund: two
+  fund_class: two
+  entity: two

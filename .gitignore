@@ -19,3 +19,15 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+.idea
+.idea/*.*
+*.DS_Store
+.idea/runConfigurations/
+.idea/vcs.xml
+.*swp
+coverage
+/uploads/*
+test/fixtures/files/uploads/tmp
+.ruby-gemset
+.env

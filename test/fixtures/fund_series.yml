@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  name: MyString
+  fund: one
+  start_date: 2017-05-29
+
+two:
+  code: MyString
+  name: MyString
+  fund: two
+  start_date: 2017-05-29
