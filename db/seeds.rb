@@ -5,4 +5,38 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
+User.first_or_create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+# process
+
+def process
+  create_entities
+end
+
+def create_entities
+
+end
+
+def create_funds
+
+end
+
+def create_fund_class
+
+end
+
+def fund_investor
+
+end
+
+def create_fund_series
+
+end
+
+def create_investment
+
+end
+
+def create_investment_series
+
+end

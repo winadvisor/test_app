@@ -47,49 +47,34 @@ ActiveRecord::Schema.define(version: 20170528191559) do
     t.index ["fund_id"], name: "index_fund_classes_on_fund_id", using: :btree
   end
 
-  create_table "fund_investors", force: :cascade do |t|
-    t.integer  "fund_class_id", null: false
-    t.integer  "entity_id",     null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["entity_id"], name: "index_fund_investors_on_entity_id", using: :btree
-    t.index ["fund_class_id"], name: "index_fund_investors_on_fund_class_id", using: :btree
-  end
-
-  create_table "fund_series", force: :cascade do |t|
-    t.string   "code",       null: false
-    t.string   "name",       null: false
-    t.integer  "fund_id",    null: false
-    t.date     "start_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["fund_id"], name: "index_fund_series_on_fund_id", using: :btree
-  end
-
   create_table "funds", force: :cascade do |t|
-    t.string   "code",       null: false
-    t.string   "name",       null: false
-    t.string   "fund_type",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "investment_series", force: :cascade do |t|
-    t.integer  "investment_id",  null: false
-    t.integer  "fund_series_id", null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["fund_series_id"], name: "index_investment_series_on_fund_series_id", using: :btree
-    t.index ["investment_id"], name: "index_investment_series_on_investment_id", using: :btree
+    t.string   "code",                   null: false
+    t.string   "name",                   null: false
+    t.integer  "parent_id",  default: 0, null: false
+    t.string   "fund_type",              null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "investments", force: :cascade do |t|
-    t.integer  "fund_investor_id",     null: false
-    t.float    "amount",               null: false
+    t.integer  "fund_class_id",        null: false
+    t.integer  "entity_id",            null: false
+    t.integer  "series_id"
     t.string   "capital_account_code", null: false
+    t.float    "amount_contributed",   null: false
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.index ["fund_investor_id"], name: "index_investments_on_fund_investor_id", using: :btree
+    t.index ["entity_id"], name: "index_investments_on_entity_id", using: :btree
+    t.index ["fund_class_id"], name: "index_investments_on_fund_class_id", using: :btree
+    t.index ["series_id"], name: "index_investments_on_series_id", using: :btree
+  end
+
+  create_table "series", force: :cascade do |t|
+    t.string   "code",       null: false
+    t.string   "name",       null: false
+    t.date     "start_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -108,10 +93,7 @@ ActiveRecord::Schema.define(version: 20170528191559) do
   end
 
   add_foreign_key "fund_classes", "funds"
-  add_foreign_key "fund_investors", "entities"
-  add_foreign_key "fund_investors", "fund_classes"
-  add_foreign_key "fund_series", "funds"
-  add_foreign_key "investment_series", "fund_series"
-  add_foreign_key "investment_series", "investments"
-  add_foreign_key "investments", "fund_investors"
+  add_foreign_key "investments", "entities"
+  add_foreign_key "investments", "fund_classes"
+  add_foreign_key "investments", "series"
 end
