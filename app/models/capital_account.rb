@@ -1,0 +1,2 @@
+class CapitalAccount < ApplicationRecord
+end

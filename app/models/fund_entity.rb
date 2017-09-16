@@ -1,0 +1,2 @@
+class FundEntity < ApplicationRecord
+end
