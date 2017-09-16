@@ -1,0 +1,2 @@
+class PnlItem < ApplicationRecord
+end

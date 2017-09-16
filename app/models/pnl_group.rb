@@ -1,0 +1,2 @@
+class PnlGroup < ApplicationRecord
+end

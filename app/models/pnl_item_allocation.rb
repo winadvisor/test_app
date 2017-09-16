@@ -1,0 +1,2 @@
+class PnlItemAllocation < ApplicationRecord
+end
